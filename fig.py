@@ -323,9 +323,8 @@ class gui:
             self.msgbox.insert('end','自动打卡已开启\n')
             if self.net_data.get_stage() == 0:
                 self.net_data.re_connect(self.name,self.password)
-            else:
-                self.sched.add_job(self.submit_func,'cron',month = '1-12',day = '*',hour = 9,id = 'card')
-                self.sched.print_jobs()
+            self.sched.add_job(self.submit_func,'cron',month = '1-12',day = '*',hour = 9,id = 'card')
+            self.sched.print_jobs()
         else:
             self.card_flag = 0
             self.cardb['text'] = '自动打卡：关'
